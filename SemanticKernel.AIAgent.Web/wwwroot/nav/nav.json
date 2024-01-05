@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 1,
+    "Title": "Chat",
+    "Icon": "mdi-chat-processing-outline",
+    "Href": "/chat/chat"
+  
+  },
+  {
+    "Id": 2,
+    "Title": "App",
+    "Icon": "mdi-application-outline",
+    "Href": "/app/applist"
+  },
+  {
+    "Id": 3,
+    "Title": "Kms",
+    "Icon": "mdi-database-outline",
+    "Href": "/knowledgebase/kms"
+  
+  },
+  {
+    "Id": 9,
+    "Title": "Setting",
+    "Icon": "mdi-cog",
+    "Children": [
+      {
+        "Id": 10,
+        "Title": "Setting",
+        "Href": "/setting/detail"
+      }
+    ]
+  }
+]

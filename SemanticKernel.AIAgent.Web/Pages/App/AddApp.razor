@@ -1,0 +1,57 @@
+﻿@using SemanticKernel.AIAgent.Web.Data.Application.App.Dto
+@namespace SemanticKernel.AIAgent.Web.Pages.App
+<MNavigationDrawer Temporary Fixed Right Value=Visible ValueChanged=VisibleChanged Width="465" Class="pa-6">
+     <div class="block-between mb-12">
+         <span class="text-h6">新建应用</span>
+         <MIcon Color="neutral-lighten-3" Size=24 OnClick="()=>Visible=false">mdi-close</MIcon>
+     </div>
+     <MForm Model=_appData EnableValidation>
+         <MTextField @bind-Value="_appData.Name" Class="mb-6" Label="名称" HideDetails="@("auto")" Outlined />
+         <MTextField @bind-Value="_appData.Describe" Class="mb-6" Label="描述" HideDetails="@("auto")" Outlined />
+        
+         <div style="bottom:48px;right:24px;position:absolute">
+             <MButton MinWidth=80 Height=40 Outlined Class="text-btn rounded-pill" OnClick="async() => await UpdateVisible(false)"> 取消 </MButton>
+             <MButton MinWidth=80 Height=40 Color="primary" Class="ml-6 rounded-pill" OnClick="async ()=> await AddData(context.EditContext)"> 保存 </MButton>
+         </div>
+     </MForm>
+ </MNavigationDrawer>
+
+ @code {
+    private AppDto _appData = new AppDto();
+
+    [Parameter]
+    public bool? Visible { get; set; }
+
+    [Parameter]
+    public EventCallback<bool?> VisibleChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<AppDto> Submit { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        _appData = new AppDto();
+    }
+
+    private async Task UpdateVisible(bool visible)
+    {
+        if (VisibleChanged.HasDelegate)
+        {
+            await VisibleChanged.InvokeAsync(visible);
+        }
+        else
+        {
+            Visible = visible;
+        }
+    }
+
+    private async Task AddData(EditContext context)
+    {
+        if (context.Validate())
+        {
+            if (Submit.HasDelegate) await Submit.InvokeAsync(_appData);
+
+            await UpdateVisible(false);
+        }
+    }
+}

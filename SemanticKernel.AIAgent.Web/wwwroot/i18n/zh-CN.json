@@ -1,0 +1,30 @@
+{
+  "Chat": "聊天",
+  "App": "应用",
+  "Kms": "知识库",
+  "Setting": "设置",
+
+  "$DefaultLanguage": "true",
+  "$Text": "中文简体",
+
+  "Not Authorized": "没有授权",
+  "Register v1": "注册版本1",
+  "Register v2": "注册版本2",
+  "Forgot Password v1": "忘记密码版本1",
+  "Forgot Password v2": "忘记密码版本2",
+  "Reset Password v1": "重置密码版本1",
+  "Reset Password v2": "重置密码版本2",
+  "Others": "其他",
+  "Account Settings": "账户设置",
+  "Favorite": "收藏",
+  "Settings": "设置",
+  "NavigationStyle": "导航样式",
+  "Flat": "扁平",
+  "Rounded": "圆角",
+  "Breadcrumb": "面包屑",
+  "PageTab": "多页签",
+  "Mode": "模式",
+  "View of {0}": "{0} 的视图",
+  "Edit of {0}": "编辑 {0}",
+  "Details of {0}": "{0} 的详情"
+}

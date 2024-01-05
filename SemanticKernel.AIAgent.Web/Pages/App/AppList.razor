@@ -1,0 +1,49 @@
+﻿@page "/app/applist"
+@using SemanticKernel.AIAgent.Domain.Repositories
+@inherits ProComponentBase
+@inject MasaBlazor MasaBlazor
+@inject NavHelper NavHelper;
+@inject IApps_Repositories _apps_Repositories;
+@implements IDisposable
+<MRow>
+    <MCol Md=6 Sm=12>
+        <MTextField @bind-Value="_search" Class="rounded-2 max-height" HideDetails="@("auto")" Height=54 Flat Solo Placeholder="搜索应用">
+             <PrependInnerContent>
+                 <MIcon Size=16 Class="mr-2 neutral-lighten-1--text">mdi-magnify</MIcon>
+             </PrependInnerContent>
+         </MTextField>
+     </MCol>
+     <MCol Md=2 Sm=12>
+         <MButton Large Block Depressed class="primary mt-3 text-capitalize rounded-pill">
+             查询
+         </MButton>
+     </MCol>
+     <MCol Md=2 Sm=12>
+     </MCol>
+     <MCol Md=2 Sm=12>
+         <MButton Large Block Depressed class="primary mt-3 text-capitalize rounded-pill" OnClick="() => visible = true">
+             新建
+         </MButton>
+     </MCol>
+ </MRow>
+<MRow>
+    @foreach (var item in _apps_Repositories.GetList())
+    {
+        <MCol Md=3 Sm=12>
+            <MCard Height=146>
+                <MCardText>
+                    <MRow Class="max-height" NoGutters>
+                     <MCol>
+                         <span class="text-btn neutral-lighten-4--text">应用</span>
+                         <h5 class="mt-1">@item.Name</h5>
+                         <MButton Color="primary" Height=30 Class="white--text text-btn rounded-pill" Style="bottom:16px;position:absolute">编辑</MButton>
+                     </MCol>
+                 </MRow>
+             </MCardText>
+         </MCard>
+     </MCol>
+    } 
+</MRow>
+
+<AddApp @bind-Visible="visible" Submit="AddApp"></AddApp>
+

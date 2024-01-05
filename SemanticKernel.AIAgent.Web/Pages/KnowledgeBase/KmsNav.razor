@@ -1,0 +1,14 @@
+﻿<MNavigationDrawer Permanent Class="rounded-4" Width="300" Style="overflow: visible;">
+    <MButton Class="ma-6 rounded-pill" Style="width:-webkit-fill-available;" Dark Color="primary" OnClick="() => visible = true">Add Task</MButton>
+    <MList Routable Dense Class="remover-ripple">
+        <KmsNavItem Href="/knowledgebase/kmsdetail" Icon="mdi-email-outline" Title="数据集"></KmsNavItem>
+         <KmsNavItem Href="/" Icon="mdi-star-outline" Title="搜索测试"></KmsNavItem>
+         <KmsNavItem Href="/" Icon="mdi-check" Title="配置"></KmsNavItem>
+    </MList>
+</MNavigationDrawer>
+
+ <KmsDetail @bind-Value="visible" SelectItem=null></KmsDetail>
+
+@code {
+    bool? visible;
+}

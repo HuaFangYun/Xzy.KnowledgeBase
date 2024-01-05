@@ -1,0 +1,63 @@
+﻿@using SemanticKernel.AIAgent.Web.Data.Application.Kms.Dto
+@using SemanticKernel.AIAgent.Domain.Options
+@namespace SemanticKernel.AIAgent.Web.Pages.App
+<MNavigationDrawer Temporary Fixed Right Value=Visible ValueChanged=VisibleChanged Width="465" Class="pa-6">
+     <div class="block-between mb-12">
+         <span class="text-h6">新建知识库</span>
+         <MIcon Color="neutral-lighten-3" Size=24 OnClick="()=>Visible=false">mdi-close</MIcon>
+     </div>
+     <MForm Model=_kmsData EnableValidation>
+         <MTextField @bind-Value="_kmsData.Name" Class="mb-6" Label="名称" HideDetails="@("auto")" Outlined />
+
+         <MSelect HideDetails="@("auto")" Class="mb-6" Outlined Label="会话模型" @bind-Value=_kmsData.ChatModel
+                  Items=@AIModelOption.KmsChatModel.Split(",").ToList() ItemText="r => r" ItemValue="r => r">
+         </MSelect>
+         <MSelect HideDetails="@("auto")" Class="mb-6" Outlined Label="嵌入模型" @bind-Value=_kmsData.EmbeddingModel
+                  Items=@AIModelOption.KmsEmbeddingModel.Split(",").ToList() ItemText="r => r" ItemValue="r => r">
+         </MSelect>
+         <div style="bottom:48px;right:24px;position:absolute">
+             <MButton MinWidth=80 Height=40 Outlined Class="text-btn rounded-pill" OnClick="async() => await UpdateVisible(false)"> 取消 </MButton>
+             <MButton MinWidth=80 Height=40 Color="primary" Class="ml-6 rounded-pill" OnClick="async ()=> await AddData(context.EditContext)"> 保存 </MButton>
+         </div>
+     </MForm>
+ </MNavigationDrawer>
+
+ @code {
+    private KmsDto _kmsData = new KmsDto();
+
+    [Parameter]
+    public bool? Visible { get; set; }
+
+    [Parameter]
+    public EventCallback<bool?> VisibleChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<KmsDto> Submit { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        _kmsData = new KmsDto();
+    }
+
+    private async Task UpdateVisible(bool visible)
+    {
+        if (VisibleChanged.HasDelegate)
+        {
+            await VisibleChanged.InvokeAsync(visible);
+        }
+        else
+        {
+            Visible = visible;
+        }
+    }
+
+    private async Task AddData(EditContext context)
+    {
+        if (context.Validate())
+        {
+            if (Submit.HasDelegate) await Submit.InvokeAsync(_kmsData);
+
+            await UpdateVisible(false);
+        }
+    }
+}

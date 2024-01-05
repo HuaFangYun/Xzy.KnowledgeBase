@@ -1,0 +1,27 @@
+﻿@page "/knowledgebase/kmsdetail/{FilterText?}"
+@page "/knowledgebase/kmsdetail"
+<CascadingValue Value="this">
+    <div>
+        <MRow Class="no-gutters">
+            <div style="height:calc(100vh - 112px );">
+                <KmsNav />
+            </div>
+            <div class="pl-6 rounded-2" style="height:calc(100vh - 112px ); width: calc(100% - 300px); overflow: hidden; display:block;">
+                @*<Kms FilterText=@FilterText />*@
+                <div>
+                    <MToolbar Dense Elevation="0" Class="rounded-2" Height="60">
+                         <MTextField TValue="string"
+                                     Class="task-search mx-4"
+                                     HideDetails=true
+                                     Placeholder="查询" @bind-Value=InputText>
+                             <PrependContent>
+                                 <MIcon Small Class="mt-1">fa fa-search</MIcon>
+                             </PrependContent>
+
+                         </MTextField>
+                     </MToolbar>   
+                </div>
+            </div>
+        </MRow>
+    </div>
+</CascadingValue>

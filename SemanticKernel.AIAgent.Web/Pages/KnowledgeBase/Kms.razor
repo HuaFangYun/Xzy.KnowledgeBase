@@ -1,0 +1,52 @@
+﻿@page "/knowledgebase/kms"
+@using SemanticKernel.AIAgent.Web.Pages.App
+@using SemanticKernel.AIAgent.Domain.Repositories
+@inherits ProComponentBase
+@inject MasaBlazor MasaBlazor
+@inject NavHelper NavHelper;
+@inject IKmss_Repositories _kmss_Repositories;
+@implements IDisposable
+
+<MRow>
+    <MCol Md=6 Sm=12>
+        <MTextField @bind-Value="_search" Class="rounded-2 max-height" HideDetails="@("auto")" Height=54 Flat Solo Placeholder="搜索知识库">
+             <PrependInnerContent>
+                 <MIcon Size=16 Class="mr-2 neutral-lighten-1--text">mdi-magnify</MIcon>
+             </PrependInnerContent>
+        </MTextField>
+    </MCol>
+      <MCol Md=2 Sm=12>
+         <MButton Large Block Depressed class="primary mt-3 text-capitalize rounded-pill">
+             查询
+         </MButton>
+    </MCol>
+     <MCol Md=2 Sm=12>
+    </MCol>
+    <MCol Md=2 Sm=12>
+         <MButton Large Block Depressed class="primary mt-3 text-capitalize rounded-pill" OnClick="() => visible = true">
+             新建
+         </MButton>
+    </MCol>
+</MRow>
+<MRow>
+     @foreach (var item in _kmss_Repositories.GetList())
+    {
+        <div @onclick="NavigateToDetail" class="hover-pointer neutral--text" style="width:100%;box-shadow: inset -1px 0px 0px #F0F3FA, inset 0px 0.5px 0px #F0F3FA;border-bottom-right-radius: 20px !important;">
+            <MCol Md=3 Sm=12>
+                <MCard Height=146>
+                    <MCardText >
+                        <MRow Class="max-height" NoGutters>
+                         <MCol>
+                             <span class="text-btn neutral-lighten-4--text">知识库</span>
+                             <h5 class="mt-1">@item.Name</h5>
+                             <span class="text-caption neutral-lighten-2--text">@item.ChatModel</span><br/>
+                             <span class="text-caption neutral-lighten-2--text">@item.EmbeddingModel</span>
+                            </MCol>
+                        </MRow>
+                    </MCardText>
+                </MCard>
+            </MCol>
+        </div>
+    }
+</MRow>
+<AddKms @bind-Visible="visible" Submit="AddKms"></AddKms>
