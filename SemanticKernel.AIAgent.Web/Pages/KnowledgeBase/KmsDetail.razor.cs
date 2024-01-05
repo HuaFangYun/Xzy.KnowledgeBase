@@ -7,6 +7,9 @@
         private bool? _visible;
 
         [Parameter]
+        public string? Id { get; set; }
+
+        [Parameter]
         public string? FilterText
         {
             get { return _filterText; }

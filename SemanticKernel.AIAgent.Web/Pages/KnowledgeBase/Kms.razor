@@ -32,7 +32,7 @@
      @foreach (var item in _kmss_Repositories.GetList())
     {
         
-        <MCol Md=3 Sm=12 @onclick="NavigateToDetail" class="hover-pointer neutral--text">
+        <MCol Md=3 Sm=12 @onclick="()=>NavigateToDetail(item.Id)" class="hover-pointer neutral--text">
             <MCard Height=146>
                 <MCardText >
                     <MRow Class="max-height" NoGutters>

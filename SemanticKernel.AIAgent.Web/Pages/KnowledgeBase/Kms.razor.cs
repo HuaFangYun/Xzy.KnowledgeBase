@@ -53,9 +53,9 @@ namespace SemanticKernel.AIAgent.Web.Pages.KnowledgeBase
             _kmss_Repositories.Insert(app);
         }
 
-        private void NavigateToDetail()
+        private void NavigateToDetail(string id)
         {
-            Nav.NavigateTo($"knowledgebase/kmsdetail");
+            Nav.NavigateTo($"knowledgebase/kmsdetail/{id}");
         }
     }
 }
