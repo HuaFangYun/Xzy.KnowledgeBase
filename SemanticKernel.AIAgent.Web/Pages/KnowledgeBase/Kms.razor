@@ -31,22 +31,22 @@
 <MRow>
      @foreach (var item in _kmss_Repositories.GetList())
     {
-        <div @onclick="NavigateToDetail" class="hover-pointer neutral--text" style="width:100%;box-shadow: inset -1px 0px 0px #F0F3FA, inset 0px 0.5px 0px #F0F3FA;border-bottom-right-radius: 20px !important;">
-            <MCol Md=3 Sm=12>
-                <MCard Height=146>
-                    <MCardText >
-                        <MRow Class="max-height" NoGutters>
-                         <MCol>
-                             <span class="text-btn neutral-lighten-4--text">知识库</span>
-                             <h5 class="mt-1">@item.Name</h5>
-                             <span class="text-caption neutral-lighten-2--text">@item.ChatModel</span><br/>
-                             <span class="text-caption neutral-lighten-2--text">@item.EmbeddingModel</span>
-                            </MCol>
-                        </MRow>
-                    </MCardText>
-                </MCard>
-            </MCol>
-        </div>
+        
+        <MCol Md=3 Sm=12 @onclick="NavigateToDetail" class="hover-pointer neutral--text">
+            <MCard Height=146>
+                <MCardText >
+                    <MRow Class="max-height" NoGutters>
+                        <MCol>
+                            <span class="text-btn neutral-lighten-4--text">知识库</span>
+                            <h5 class="mt-1">@item.Name</h5>
+                            <span class="text-caption neutral-lighten-2--text">会话模型：@item.ChatModel</span><br/>
+                            <span class="text-caption neutral-lighten-2--text">嵌入模型：@item.EmbeddingModel</span>
+                        </MCol>
+                    </MRow>
+                </MCardText>
+            </MCard>
+        </MCol>
+   
     }
 </MRow>
 <AddKms @bind-Visible="visible" Submit="AddKms"></AddKms>
