@@ -87,6 +87,26 @@
             描述
             </summary>
         </member>
+        <member name="P:SemanticKernel.AIAgent.Domain.Repositories.KmsDetails.FileName">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:SemanticKernel.AIAgent.Domain.Repositories.KmsDetails.DataCount">
+            <summary>
+            数据数量
+            </summary>
+        </member>
+        <member name="P:SemanticKernel.AIAgent.Domain.Repositories.KmsDetails.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:SemanticKernel.AIAgent.Domain.Repositories.KmsDetails.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
         <member name="P:SemanticKernel.AIAgent.Domain.Repositories.Kmss.Name">
             <summary>
             名称

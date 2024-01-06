@@ -25,6 +25,7 @@ namespace SemanticKernel.AIAgent.Web.Controllers
             _repository.GetDB().DbMaintenance.CreateDatabase();
             _repository.GetDB().CodeFirst.InitTables(typeof(Apps));
             _repository.GetDB().CodeFirst.InitTables(typeof(Kmss));
+            _repository.GetDB().CodeFirst.InitTables(typeof(KmsDetails));
             return Ok();
         }
     }
