@@ -4,14 +4,14 @@ The semantic-kernel-aiagent is licensed under the Apache License 2.0, with the f
 
 1. semantic-kernel-aiagent is permitted to be used for commercialization. You can use semantic-kernel-aiagent as a "backend-as-a-service" for your other applications, or delivering it to enterprises as an application development platform. However, when the following conditions are met, you must contact the producer to obtain a commercial license:
 
-a. Multi-tenant SaaS service: Unless explicitly authorized by semantic-kernel-aiagent in writing, you may not use the semantic-kernel-aiagent.AI source code to operate a multi-tenant SaaS service that is similar to the semantic-kernel-aiagent.
-b. LOGO and copyright information: In the process of using semantic-kernel-aiagent, you may not remove or mosemantic-kernel-aiagent the LOGO or copyright information in the semantic-kernel-aiagent console.
+a. LOGO and copyright information: In the process of using semantic-kernel-aiagent, you may not remove or mosemantic-kernel-aiagent the LOGO or copyright information in the semantic-kernel-aiagent console.
 
 Please contact changtuiqie@aliyun.com by email to inquire about licensing matters.
 
 2. As a contributor, you should agree that your contributed code:
 
-a. Can be used for commercial purposes, such as semantic-kernel-aiagent's cloud business.
+a. The producer can adjust the open-source agreement to be more strict or relaxed.
+b. Can be used for commercial purposes, such as semantic-kernel-aiagent's cloud business.
 
 Apart from this, all other rights and restrictions follow the Apache License 2.0. If you need more detailed information, you can refer to the full version of Apache License 2.0.
 
