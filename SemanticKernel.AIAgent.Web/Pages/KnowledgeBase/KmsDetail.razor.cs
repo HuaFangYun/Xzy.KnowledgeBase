@@ -1,23 +1,16 @@
-﻿namespace SemanticKernel.AIAgent.Web.Pages.KnowledgeBase
+﻿using SemanticKernel.AIAgent.Domain.Repositories;
+using SemanticKernel.AIAgent.Web.Pages.KnowledgeBase.ViewModel;
+
+namespace SemanticKernel.AIAgent.Web.Pages.KnowledgeBase
 {
     public partial class KmsDetail
     {
         private string? _inputText;
-        private string? _filterText;
         private bool? _visible;
-
+        public KmsPage _kmsPage = new KmsPage(new List<KmsDetails>());
+       
         [Parameter]
         public string? Id { get; set; }
-
-        [Parameter]
-        public string? FilterText
-        {
-            get { return _filterText; }
-            set
-            {
-                _filterText = value;
-            }
-        }
 
         [Parameter]
         public bool? Value { get; set; }
@@ -27,6 +20,15 @@
 
         [Parameter]
         public Object? SelectItem { get; set; }
+
+        private readonly List<DataTableHeader<KmsDetails>> _headers = new()
+        {
+            new() { Text = "Id", Value = nameof(KmsDetails.Id)  },
+            new() { Text = "文件名", Value = nameof(KmsDetails.FileName) },
+            new() { Text = "数据数量", Value = nameof(KmsDetails.DataCount) },
+            new() { Text = "状态", Value = nameof(KmsDetails.Status) },
+            new() { Text = "创建时间", Value = nameof(KmsDetails.CreateTime) },
+        };
 
         private void InputTextChanged(string? text)
         {

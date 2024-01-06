@@ -2,6 +2,7 @@
 @page "/knowledgebase/kmsdetail/{id}"
 @using SemanticKernel.AIAgent.Domain.Repositories
 @inject IKmsDetails_Repositories _kmsDetail_Repositories;
+
 <CascadingValue Value="this">
     <div>
         <MRow Class="no-gutters">
@@ -9,26 +10,59 @@
                 <KmsNav Title="测试知识库"/>
             </div>
             <div class="pl-6 rounded-2" style="height:calc(100vh - 145px ); width: calc(100% - 200px); overflow: hidden; display:block;">
-                <div>
-                    <MToolbar Dense Elevation="0" Class="rounded-2" Height="60">
-                         <MTextField TValue="string"
-                                     Class="task-search mx-4"
-                                     HideDetails=true
-                                     Placeholder="查询" @bind-Value=InputText>
-                             <PrependContent>
-                                 <MIcon Small Class="mt-1">fa fa-search</MIcon>
-                             </PrependContent>
-                         </MTextField>
-                         <MButton MinWidth=60 Height=40 Outlined Class="text-btn rounded-pill"  >新建/导入</MButton>
-                     </MToolbar>   
-                   @*  <MList Dense Class="rounded-4 mt-6" Style="height: calc(100vh - 229px ); overflow-y:auto;"> *@
-                     <MDataTable   Items="_kmsDetail_Repositories.GetList()" TItem="KmsDetails" ItemsPerPage="50" HideDefaultFooter Class="user table-border-none" Style="margin-top:5px">
+                <MCard >
+                    <MCardText Class="pa-6">
+                        <MRow>
+                            <MCol Md=6 Sm=12 Class="d-flex block-center">
+                             
+                             </MCol>
+                             <MCol Md=6 Sm=12 Class="d-flex block-center">
+                                 <MTextField @bind-Value="_inputText" Color="primary" Class="rounded-2" HideDetails="@("auto")" Flat Dense Solo BackgroundColor="fill-lighten-1" Placeholder="查询">
+                                     <PrependInnerContent>
+                                         <MIcon Size=16 Class="mr-2 neutral-lighten-1--text">mdi-magnify</MIcon>
+                                     </PrependInnerContent>
+                                 </MTextField>
+                                 <MButton Color="primary" MinWidth=80 Height=32 Class="ml-6 rounded-pill" OnClick="()=>_visible=true">
+                                     新建/导入
+                                 </MButton>
+                             </MCol>
+                         </MRow>
+                     </MCardText>
+
+                     <MDataTable Headers="_headers" Items="_kmsDetail_Repositories.GetList()" TItem="KmsDetails" ItemsPerPage="50" HideDefaultFooter Class="user table-border-none" Style="margin-top:5px">
                           <HeaderColContent Context="header">
+                             <span class="text-subtitle">@header.Text</span>
                         </HeaderColContent>
                          <ItemColContent>
-                         </ItemColContent>
+                               @switch (context.Header.Value)
+                               {
+                                    case nameof(KmsDetails.Id):
+                                        <span>@context.Item.Id</span>
+                                        break;
+                                    case nameof(KmsDetails.FileName):
+                                        <span>@context.Item.FileName</span>
+                                        break;
+                                    case nameof(KmsDetails.DataCount):
+                                        <span>@context.Item.DataCount</span>
+                                        break;
+                                    case nameof(KmsDetails.Status):
+                                        <span>@context.Item.Status</span>
+                                    break;
+                                    case nameof(KmsDetails.CreateTime):
+                                        <span>@context.Item.CreateTime</span>
+                                        break;
+                               }    
+                            </ItemColContent>
                      </MDataTable>
-                </div>
+                    <MCardText>
+                        <div class="d-flex">
+                            <div class="mr-auto pt-3 text-btn neutral-lighten-1--text">Showing</div>
+                         
+                                <MPagination   Color="primary" Circle Length=10></MPagination>
+                      
+                        </div>
+                    </MCardText>
+                 </MCard>
             </div>
         </MRow>
     </div>
