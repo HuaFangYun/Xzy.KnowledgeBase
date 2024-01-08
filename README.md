@@ -34,7 +34,7 @@ SemanticKernel.AIAgent 适用于多种业务场景，例如：
 
 想了解更多信息或开始使用 **SemanticKernel.AIAgent**，敬请访问我们的[官方文档页面](#)或加入我们的[开发者社区](#)以获取技术支持和与同行交流。
 
-## 联系我们
+## 联系我
 如有任何问题或建议，请通过以下方式关注我的公众号，可以发送进群等消息，然后我会拉你进交流群
 ![公众号](https://raw.githubusercontent.com/xuzeyu91/semantic-kernel-aiagent/main/gzh.jpg)
 
